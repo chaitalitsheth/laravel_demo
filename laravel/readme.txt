@@ -37,3 +37,6 @@ For Verify email Following steps need to follow in laravel
 
 
 
+
+
+
