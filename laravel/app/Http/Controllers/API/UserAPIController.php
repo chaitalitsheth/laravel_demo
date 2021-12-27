@@ -9,7 +9,7 @@ use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 
-class RegisterController extends Controller
+class UserAPIController extends Controller
 {
     /*
     |--------------------------------------------------------------------------
@@ -69,6 +69,14 @@ class RegisterController extends Controller
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
         ]);
+    }
+    public function Check(Request $request)
+    {
+        $validated = $request->validate([
+            'email' => ['required', 'string', 'email','regex:/(.*)@(gmail|yahoo|Hotmail)\.(com|co|in)/i', 'max:255', 'unique:users'],
+        ]);
+        print_r($validated);
+        // The blog post is valid...
     }
 
 }
